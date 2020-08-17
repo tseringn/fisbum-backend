@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_09_171926) do
+ActiveRecord::Schema.define(version: 2020_08_17_175533) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2020_08_09_171926) do
   create_table "friends", force: :cascade do |t|
     t.integer "user_id"
     t.integer "my_friend_id"
-    t.integer "friendship_score"
+    t.integer "friendship_score", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -68,13 +68,17 @@ ActiveRecord::Schema.define(version: 2020_08_09_171926) do
     t.string "country"
     t.string "bio"
     t.string "status"
-    t.integer "fisbum_count"
+    t.integer "fisbum_count", default: 0
     t.string "location"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "username"
     t.string "password"
-    t.string "img_url"
+    t.string "img_url", default: "https://brandyourself.com/blog/wp-content/uploads/linkedin-profile-picture-too-close.png"
+    t.string "qr_code"
+    t.string "latitude"
+    t.string "longitude"
+    t.string "sex"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

@@ -30,6 +30,12 @@ Rails.application.routes.draw do
     get '/users/search/:id', to: 'users#search'
     end
   end
+
+  namespace :api do
+    namespace :v1 do
+    post '/fisbums/get_fisbum', to: 'fisbums#get_fisbum'
+    end
+  end
   # namespace :api do
   #   namespace :v1 do
   #     post '/friends/unfriend', to: 'friends#unfriend'

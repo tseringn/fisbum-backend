@@ -16,15 +16,17 @@ class Api::V1::RequestsController < ApplicationController
             requester.my_friends << requestee
             requestee.my_friends << requester   
         end
-        
-        render json: requester, :include => [:friends, :my_friends, :requestings, :requesters, :fisbumings, :fisbumers]
-        
+
         is_firend= requester.my_friends.find do |friend|
             friend.id==requestee.id
             end
         if(is_firend)
             req.destroy
         end
+        
+        render json: requester, :include => [:friends, :my_friends, :requestings, :requesters, :fisbumings, :fisbumers]
+        
+        
     end
 
     private
