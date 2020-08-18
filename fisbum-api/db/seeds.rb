@@ -11,8 +11,8 @@ Friend.destroy_all
 Request.destroy_all
 Fisbum.destroy_all
 
-us1=User.create(first_name: "Tsering", last_name: "Norbu", dob: "11/03/1994", email: 'thetseringnorbu@gmail.com', phone_number: '15513994282', pvt: 'false', country: 'US', bio: 'Dreamer, liver, lover', status: 'building this app!', username: 'bhutsenor', password: '123', img_url: 'https://ca.slack-edge.com/T02MD9XTF-U012Z0KTBTP-ccd5ca6c499c-512', longitude: '40.7831' ,latitude: '73.9712')
-us2=User.create(first_name: "Kalsang", last_name: "Palmo", dob: "12/01/1993", email: 'kalsangpalmo4013@gmail.com', phone_number: '13474216848', pvt: 'false', country: 'US', bio: 'Dreamer, liver, lover', status: 'helping to build this app!', username: 'kapee', password: '4013', img_url: 'https://scontent.fewr1-5.fna.fbcdn.net/v/t1.0-9/50000851_1909623665827189_167567848405729280_o.jpg?_nc_cat=106&_nc_sid=09cbfe&_nc_ohc=DF-7z8pXIKkAX9okwEl&_nc_ht=scontent.fewr1-5.fna&oh=889c73f6c68db43d4ef4877eed9bf123&oe=5F551944', latitude: '73.7949', longitude: '40.7282')
+us1=User.create(first_name: "Tsering", last_name: "Norbu", dob: "11/03/1994", email: 'thetseringnorbu@gmail.com', phone_number: '15513994282', pvt: 'false', country: 'US', bio: 'Dreamer, liver, lover', status: 'building this app!', username: 'bhutsenor', password: '123', img_url: 'https://ca.slack-edge.com/T02MD9XTF-U012Z0KTBTP-ccd5ca6c499c-512', longitude: '40.7831' ,latitude: '73.9712', sex: 'male')
+us2=User.create(first_name: "Kalsang", last_name: "Palmo", dob: "12/01/1993", email: 'kalsangpalmo4013@gmail.com', phone_number: '13474216848', pvt: 'false', country: 'US', bio: 'Dreamer, liver, lover', status: 'helping to build this app!', username: 'kapee', password: '4013', img_url: 'https://scontent.fewr1-5.fna.fbcdn.net/v/t1.0-9/50000851_1909623665827189_167567848405729280_o.jpg?_nc_cat=106&_nc_sid=09cbfe&_nc_ohc=DF-7z8pXIKkAX9okwEl&_nc_ht=scontent.fewr1-5.fna&oh=889c73f6c68db43d4ef4877eed9bf123&oe=5F551944', latitude: '73.7949', longitude: '40.7282', sex: 'female')
 count=0
 500.times do
     count +=1
@@ -30,21 +30,13 @@ User.create([{
     password: '123',
     img_url: Faker::Avatar.image,
     longitude: Faker::Address.longitude,
-    latitude: Faker::Address.latitude
+    latitude: Faker::Address.latitude,
+    sex: Faker::Gender.binary_type
 
 }])
-if(count%10==0) 
-puts "#{count}th user is being created......"
+if(count%5==0) 
+print ">"
 end
 
 end
-
-
-
-
-
-
-us1.my_friends << us2
-puts "adding fisbumers...."
-us1.fisbumers << us2
-puts 'fisbumer added...'
+ puts "\n #{(count.to_f/500)*100}% DONE"
